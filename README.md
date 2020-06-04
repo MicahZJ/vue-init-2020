@@ -226,6 +226,11 @@ export default config;
 import HttpAxios from './utils/httpTool'
 Vue.prototype.$Http = HttpAxios
 ```
+> dependencies(运行依赖)
+也就是我们项目运行上线还会使用的插件 比如webpack axios vant Element UI框架
+
+> devDependencies(开发依赖)
+也就是帮助开发的插件 比如babel live-server lodash loader类似的
 
 ## Project setup
 ```
