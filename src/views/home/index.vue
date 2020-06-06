@@ -1,5 +1,6 @@
 <template lang="pug">
-  div 123
+  div#home-wrapper
+    span.span-class 测试
 </template>
 
 <script src="./control.js"></script>
