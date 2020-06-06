@@ -232,6 +232,54 @@ Vue.prototype.$Http = HttpAxios
 > devDependencies(开发依赖)
 也就是帮助开发的插件 比如babel live-server lodash loader类似的
 
+## 2020/06/06 增加
+### 1. 增加vw布局
+#### 1-1. 安装包
+
+```
+npm install postcss-px-to-viewport -D
+```
+
+#### 1-2. 在vue.config.js配置
+```
+css: {
+    extract: IS_PROD,
+    sourceMap: false,
+    loaderOptions: {
+      scss: {
+        // 向全局sass样式传入共享的全局变量, $src可以配置图片cdn前缀
+        // 详情: https://cli.vuejs.org/guide/css.html#passing-options-to-pre-processor-loaders
+        prependData: `
+          @import "@scss/variables.scss";
+          @import "@scss/mixins.scss";
+          @import "@scss/function.scss";
+          $src: "${process.env.VUE_APP_BASE_API}";
+          `
+      },
+      postcss: {
+        plugins: [
+          require("postcss-px-to-viewport")({
+            unitToConvert: "px",	// 需要转换的单位，默认为"px"
+            viewportWidth: 1920,   // 视窗的宽度，对应的是我们设计稿的宽度，一般是750
+            // viewportHeight:667,// 视窗的高度，对应的是我们设计稿的高度
+            unitPrecision: 3,		// 单位转换后保留的精度
+            propList: [		// 能转化为vw的属性列表
+              "*"
+            ],
+            viewportUnit: "vw",		// 希望使用的视口单位
+            fontViewportUnit: "vw",		// 字体使用的视口单位
+            selectorBlackList: [],	// 需要忽略的CSS选择器，不会转为视口单位，使用原有的px等单位。
+            minPixelValue: 1,		// 设置最小的转换数值，如果为1的话，只有大于1的值会被转换
+            mediaQuery: false,		// 媒体查询里的单位是否需要转换单位
+            replace: true,		// 是否直接更换属性值，而不添加备用属性
+            exclude: /(\/|\\)(node_modules)(\/|\\)/,		// 忽略某些文件夹下的文件或特定文件，例如 'node_modules' 下的文件
+          })
+        ]
+      }
+    }
+  },
+```
+
 ## Project setup
 ```
 yarn install
