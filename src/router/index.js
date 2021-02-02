@@ -1,17 +1,40 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/home/index';
+import Echarts from '../views/echarts_page/index';
 
 // 懒加载组件
 // const Home = () => import("./views/Home/index");
 Vue.use(VueRouter)
 
+// 加载进度条=
+import NProgress from 'nprogress'
+import 'nprogress/nprogress.css'
+
+
+// 简单配置
+NProgress.inc(0.2);
+NProgress.configure(
+  { easing: 'ease', speed: 500, showSpinner: false }
+); // 动作
+
 const routes = [
   {
     path: '/',
-    name: 'home',
-    component: Home
+    redirect: '/home'
   },
+  {
+    path: '/home',
+    component: () => import('@/views/home_page/index.vue'),
+  },
+  {
+    path: '/echarts',
+    name: 'echarts',
+    component: Echarts
+  },
+  {
+    path: '/vuex',
+    component: () => import('@/views/vuex_page/index.vue'),
+  }
   // {
   //   path: '/about',
   //   name: 'about',
@@ -26,7 +49,19 @@ const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes
-})
+});
+
+
+//在路由跳转前用NProgress.start()标记下进度条开始
+router.beforeEach((to, from, next) => {
+  NProgress.start()
+  next()
+});
+
+//在路由跳转后用NProgress.done()标记下结束
+router.afterEach(() => {
+  NProgress.done ()
+});
 
 // 路由守卫
 // router.beforeEach((to, from, next) => {

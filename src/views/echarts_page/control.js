@@ -1,3 +1,12 @@
+import Doughnut from '@/components/charts/Doughnut'
+import Point from '@/components/charts/Point'
+import LineChart from '@/components/charts/Line'
+import Map from '@/components/charts/Map'
+import Bar from '@/components/charts/Bar'
+import Pie from '@/components/charts/Pie'
+import Gauge from '@/components/charts/Gauge'
+import DoubleLine from '@/components/charts/DoubleLine'
+
 export default {
   data () {
     return {}
@@ -5,7 +14,16 @@ export default {
   watch: {},
   computed: {},
   methods: {},
-  components: {},
+  components: {
+    Doughnut,
+    Point,
+    Map,
+    LineChart,
+    Bar,
+    Pie,
+    Gauge,
+    DoubleLine
+  },
   beforeCreate () {
     /*
      * 实例初始化后，创建完成之前被调用
