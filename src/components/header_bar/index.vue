@@ -3,10 +3,10 @@
     div.bar-box
       li.bar-content(v-for="(item, index) in barList"
                     :key="index"
+                    :class=`{'active': index === barIndex}`
                     @click="clickHandler(index, item)")
-        i(:class="[item.i]")
         span.bar-text(:class=`{'active': index === barIndex}`) {{item.name}}
-        span.bar-space
+        //span.bar-space
 </template>
 
 <script src="./control.js"></script>

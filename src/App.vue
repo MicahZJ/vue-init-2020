@@ -33,10 +33,11 @@ export default {
 
 #app .app-main {
   width: 100vw;
-  height: calc(100vh - 50px);
+  height: 100vh;
   padding: 15px 10px;
   box-sizing: border-box;
-  background: #EEE;
+
+  /* background: #EEE; */
 }
 
 /* 可以设置不同的进入和离开动画 */

@@ -1,33 +1,35 @@
 #header-bar-wrapper
-  width 100%
+  //width 100%
   //height 50px
+  position fixed
+  right 50px
+  top 300px
+  z-index 10
   .bar-box
     width 100%
-    height 50px
+    height 80px
     display flex
-    padding-left 50px
+    flex-direction column
+    //padding-left 50px
     box-sizing border-box
     .bar-content
-      //width 130px
-      height 50px
-      line-height 50px
+      background #222222
+      width 130px
+      height 80px
+      line-height 80px
       list-style none
       cursor pointer
-      &:last-child
-        span
-          border-right 0
+      &.active
+        font-size 20px
+        background skyblue
       .bar-text
-        width 100%
-        font-size: 12px;
-        font-family: Source Han Sans CN;
-        font-weight: 400;
-        color: #999999;
-        padding 0 10px
-        box-sizing border-box
-        border-right 1px solid #DCDCDC;
+        height: 80px;
+        text-align: center;
+        padding-top: 30px;
+        font-weight: 600;
+        color: #FFFFFF;
         &.active
-          font-size 14px
-          color #0F2D63
+          font-size 20px
       .bar-space
         width 10px
         margin-right 20px
@@ -35,3 +37,4 @@
         font-family: Source Han Sans CN;
         font-weight: 400;
         border-right 1px solid #DCDCDC;
+        height 100%

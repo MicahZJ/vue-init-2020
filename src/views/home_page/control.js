@@ -5,7 +5,14 @@ export default {
   watch: {},
   computed: {},
   components: {},
-  methods: {},
+  methods: {
+    async getData() {
+      let api = '/user/queryUser';
+      let requestData = {}
+      
+      let res = await this.$Http.axiosGet(api, requestData)
+    }
+  },
   beforeCreate () {
     /*
     * 实例初始化后，创建完成之前被调用
@@ -29,6 +36,7 @@ export default {
     * 实例挂载之后调用，但是并不是所有子组件也都一起挂载完成
     */
     console.log ('5. mounted');
+    this.getData()
   },
   beforeUpdate () {
     /*

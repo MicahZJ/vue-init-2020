@@ -14,7 +14,7 @@ if (process.env.NODE_ENV === "production") {
   api = {
     apiURL: "/",
     publicPath: "/",
-    apiPath: "/",
+    apiPath: "http://192.168.1.150:3006/api",
     staticPath: "/"
   };
 }

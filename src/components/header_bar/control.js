@@ -4,7 +4,7 @@ export default {
       barList: [
         {
           name: '首页',
-          path: '/echarts_page',
+          path: '/home',
           i: 'el-icon-house'
         },
         {

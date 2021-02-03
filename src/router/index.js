@@ -24,6 +24,7 @@ const routes = [
   },
   {
     path: '/home',
+    name: 'home',
     component: () => import('@/views/home_page/index.vue'),
   },
   {
@@ -33,6 +34,7 @@ const routes = [
   },
   {
     path: '/vuex',
+    name: 'vuex',
     component: () => import('@/views/vuex_page/index.vue'),
   }
   // {
@@ -44,6 +46,12 @@ const routes = [
   //   component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
   // }
 ]
+
+// 解决路由重复报错
+const originalPush = VueRouter.prototype.push
+VueRouter.prototype.push = function push(location) {
+  return originalPush.call(this, location).catch(err => err)
+};
 
 const router = new VueRouter({
   mode: 'history',

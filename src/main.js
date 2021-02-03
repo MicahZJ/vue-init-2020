@@ -12,6 +12,7 @@ Vue.prototype.$Http = HttpAxios
 
 Vue.config.productionTip = false
 
+
 new Vue({
   router,
   store,
